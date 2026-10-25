@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 250 250 249;
+  --panel: 255 255 255;
+  --subtle: 244 244 242;
+  --border: 228 228 224;
+  --fg: 28 30 33;
+  --muted: 104 108 116;
+  --accent: 31 111 139;
+  --accent-fg: 255 255 255;
+  --good: 22 128 82;
+  --warn: 176 112 12;
+  --bad: 190 46 46;
+  /* skill series colours — validated (dataviz validator, light surface, all pairs) */
+  --c-listening: 42 120 214;
+  --c-reading: 27 175 122;
+  --c-writing: 139 90 0;
+  --c-speaking: 200 80 124;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: 22 23 26;
+  --panel: 30 31 35;
+  --subtle: 38 40 45;
+  --border: 52 54 60;
+  --fg: 232 233 236;
+  --muted: 154 158 168;
+  --accent: 92 176 204;
+  --accent-fg: 16 20 24;
+  --good: 74 196 134;
+  --warn: 226 168 66;
+  --bad: 236 104 104;
+  /* dark steps of the same hues, validated against the dark surface */
+  --c-listening: 57 135 229;
+  --c-reading: 24 160 112;
+  --c-writing: 201 133 0;
+  --c-speaking: 224 112 142;
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  @apply bg-bg text-fg antialiased;
+  font-feature-settings: "cv11", "ss01";
+}
+
+*:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 2px;
+}
+
+/* Rich text (notes, reference pages, model answers) */
+.prose-app {
+  @apply text-[15px] leading-7;
+}
+.prose-app h1 { @apply text-2xl font-semibold mt-6 mb-3; }
+.prose-app h2 { @apply text-xl font-semibold mt-6 mb-2; }
+.prose-app h3 { @apply text-base font-semibold mt-4 mb-1.5; }
+.prose-app p { @apply my-2; }
+.prose-app ul { @apply list-disc pl-6 my-2; }
+.prose-app ol { @apply list-decimal pl-6 my-2; }
+.prose-app li > p { @apply my-0.5; }
+.prose-app a { @apply text-accent underline underline-offset-2; }
+.prose-app blockquote { @apply border-l-4 border-border pl-4 text-muted italic my-3; }
+.prose-app code { @apply bg-subtle rounded px-1 py-0.5 text-[13px]; }
+.prose-app pre { @apply bg-subtle rounded-lg p-3 overflow-x-auto; }
+.prose-app hr { @apply my-6 border-border; }
+.prose-app mark { background-color: rgb(250 220 90 / 0.55); color: inherit; border-radius: 2px; padding: 0 2px; }
+.dark .prose-app mark { background-color: rgb(200 160 40 / 0.45); }
+.prose-app table { @apply w-full border-collapse my-3 text-sm; }
+.prose-app th, .prose-app td { @apply border border-border px-2 py-1.5 align-top text-left; }
+.prose-app th { @apply bg-subtle font-semibold; }
+.prose-app ul[data-type="taskList"] { @apply list-none pl-1; }
+.prose-app ul[data-type="taskList"] li { @apply flex items-start gap-2; }
+.prose-app ul[data-type="taskList"] li > label { @apply mt-1.5; }
+.prose-app ul[data-type="taskList"] li[data-checked="true"] > div { @apply line-through text-muted; }
+.prose-app a[data-link-type] { @apply no-underline bg-accent/10 rounded px-1; }
+
+.ProseMirror { outline: none; min-height: 50vh; }
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  @apply text-muted float-left h-0 pointer-events-none;
+}
+.ProseMirror .selectedCell:after { background: rgb(var(--accent) / 0.12); content: ""; position: absolute; inset: 0; pointer-events: none; }
+.ProseMirror td, .ProseMirror th { position: relative; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

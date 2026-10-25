@@ -1,0 +1,22 @@
+# secrets — never commit
+backend/.env
+.env
+*.env
+!*.env.example
+APIKEY.txt
+
+# local data (database, recordings, backups, logs)
+data/
+
+# python
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# node
+frontend/node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+.DS_Store

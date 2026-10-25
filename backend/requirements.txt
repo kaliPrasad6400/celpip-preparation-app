@@ -1,0 +1,16 @@
+# Pinned, tested versions (Python 3.11+; tested on 3.13.2)
+alembic==1.20.0
+anthropic==2.0.0
+bleach==6.4.0
+fastapi==0.157.0
+feedparser==6.0.14
+httpx==0.28.1
+openai==3.36.0
+pydantic==2.14.1
+pydantic-settings==2.16.1
+python-dotenv==1.2.4
+python-multipart==0.0.32
+SQLAlchemy==2.1.5
+tinycss2==1.5.1
+uvicorn[standard]==0.54.0
+pytest==9.1.1
